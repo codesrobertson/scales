@@ -1,0 +1,27 @@
+body {
+  background-color: #F2F2F2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 30px 70px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: medium;
+}
+
+.Site-title {
+  margin: 30px 30px 0px 30px;
+  text-align: center;
+  font-family: 'Mrs Sheppards', cursive;
+  font-size: 7.594rem;
+}
+
+.Tagline {
+  margin: 0px 30px 0px 30px;
+  text-align: center;
+  font-family: 'Mrs Sheppards', cursive;
+  font-size: 3.375rem;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+}
