@@ -19,3 +19,6 @@ with open("index.html") as fp:
   soup = BeautifulSoup(fp)
 
 soup = BeautifulSoup("<html>a web page</html>")
+
+result = requests.get("https://www.google.com/")
+print(result.status_code)
