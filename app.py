@@ -14,17 +14,3 @@ def index():
 
 if __name__ == "__main__":
   app.run(debug=True)
-
-
-with open("index.html") as fp:
-  soup = BeautifulSoup(fp)
-
-soup = BeautifulSoup("<html>a web page</html>")
-
-result = requests.get("https://www.google.com/")
-print(result.status_code)
-
-
-@result.route("/scales")
-def result():
-  return app.send_static_file("index.html")
