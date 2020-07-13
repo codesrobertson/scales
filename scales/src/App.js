@@ -1,15 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+// import logo from './logo.svg';
 import './App.css';
 // import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import Form from './Form.js';
+import Result from './Result.js';
+import Home from './Home.js';
 
 function App() {
   return (
-    <div className="App">
-      <p>Kaida is an awesome tutor!</p>
-      <Form />
-    </div>
+    <HashRouter>
+      <div>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/result" component={Result} exact />
+        </Switch>
+      </div>
+    </HashRouter>  
   );
 }
 

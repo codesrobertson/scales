@@ -1,4 +1,5 @@
 {
   "powermode.enabled": true,
-  "powermode.presets": "flames"
+  "powermode.presets": "flames",
+  "python.pythonPath": "env/bin/python"
 }

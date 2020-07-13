@@ -18,6 +18,10 @@ const config = {
         use: 'babel-loader'
       }
     ]
+  },
+  
+  devServer: {
+    historyApiFallback: true
   }
 };
 module.exports = config;

@@ -8,7 +8,7 @@ const Form = (props) => {
       placeholder="url" 
       value={url} 
       onChange={e => setUrl(e.target.value)} />
-      <button>Show me the receipts!</button>
+      <button>Weigh</button>
     </form>
   );
 }

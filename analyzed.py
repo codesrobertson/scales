@@ -1,3 +1,5 @@
+# !/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pip(python 3.8)
+
 from textblob import TextBlob
 
 blob = "Gatsby is an absolutely amazing, lovable dog."
