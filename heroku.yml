@@ -1,0 +1,4 @@
+build:
+  web: pipenv install
+run:
+  web: pipenv run python3 app.py
