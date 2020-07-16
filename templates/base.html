@@ -10,12 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Mrs+Sheppards&display=swap" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
-
-  {% block head %}{% endblock %}
 </head>
 
 <body>
-  {% block body %}{% endblock %}
+  <div className="Site-title">Scales</div>
+  {% block content %}{% endblock %}
 </body>
+
+<footer>
+  <a href="/">Scales</a>
+  <a href="/about">About</a>
+  <a href="/howitworks">How it Works</a>
+  <a href="/documentation">Documentation</a>
+</footer>
 
 </html>
