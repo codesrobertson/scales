@@ -4,6 +4,7 @@ from flask import Flask, render_template, url_for, request
 from textblob import TextBlob
 import requests
 from bs4 import BeautifulSoup
+import weigh 
 
 
 app = Flask(__name__, static_url_path="", template_folder="templates")
@@ -28,22 +29,10 @@ def documentation():
 def process():
   return render_template("howitworks.html")
 
-@app.route("/result")
-def result():
-  return render_template("result.html")
+@app.route("/weigh", methods=["POST"])
+def submission():
+  weigh.get_url(request.form.get('url'))
+  return render_template("weigh.html")
 
 if __name__ == "__main__":
   app.run(debug=True)
-
-# submitted_url = 
-
-#Method to post request to Fakebox
-
-#Method to return "decision" 
-
-#Method to extract text from url submission
-
-#Method to apply TextBlob to extracted text
-
-#Method to return analyzed text
-
