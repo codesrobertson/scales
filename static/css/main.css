@@ -6,6 +6,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 30px 70px;
   font-family: 'Montserrat', sans-serif;
   font-size: medium;
+  text-align: left;
 }
 
 .Site-title {
@@ -17,11 +18,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .Tagline {
   margin: 0px 30px 0px 30px;
-  text-align: center;
+  text-align: left;
   font-family: 'Mrs Sheppards', cursive;
   font-size: 3.375rem;
 }
 
 p {
   font-family: 'Montserrat', sans-serif;
+  text-align: left;
 }
