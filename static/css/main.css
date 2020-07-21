@@ -84,29 +84,37 @@ p {
   text-align: center;
 }
 
+input {
+  padding: 4px 4px;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
 .button {
-  border-radius: 12px;
-  padding: 16px 32px;
+  background-color: white; 
+  border: 1px solid #black;
+  border-radius: 4px;
+  color: black;
+  padding: 4px 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 1rem;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  background-color: white;
-  color: black;
-  border: 2em solid #555555;
 }
 
 .button:hover {
-  background-color: #555555;
+  background-color: black;
   color: white;
 }
 
 .footer {
-  position: absolute;
-  bottom: 5rem;
+  position: fixed;
+  background: #F2F2F2;
+  padding-top: 2rem;
+  bottom: 0rem;
   width: 100%;
   text-align: center;
 }
@@ -123,4 +131,5 @@ a:link {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   text-align: center;
+  margin-top: 5rem;
 }
