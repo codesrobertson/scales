@@ -1,4 +1,7 @@
-body {
+html, body {
+  height: 100%;
+  position: relative;
+  margin: 30px;
   background-color: #F2F2F2;
 }
 
@@ -9,21 +12,115 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
 }
 
+h1 {
+  font-size: 3.815rem;
+}
+
+h2 {
+  font-size: 3.052rem;
+}
+
+h3 {
+  font-size: 2.441rem;
+}
+
+h4 {
+  font-size: 1.953rem;
+}
+
+h5 {
+  font-size: 1.563rem;
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+.Title-box {
+  height: 20rem;
+  width:20rem;
+}
+
 .Site-title {
-  margin: 30px 30px 0px 30px;
+  margin: 30px 70px;
   text-align: center;
-  font-family: 'Mrs Sheppards', cursive;
-  font-size: 7.594rem;
+  font-family: 'Arvo', serif;
+  font-size: 3.815rem;
+}
+
+.Tagline-box {
+  height: 10rem;
+  width:30rem;
 }
 
 .Tagline {
-  margin: 0px 30px 0px 30px;
-  text-align: left;
-  font-family: 'Mrs Sheppards', cursive;
-  font-size: 3.375rem;
+  margin: 30px 70px;
+  text-align: center;
+  font-size: 1.563rem;
+  font-family: 'Arvo', serif;
 }
 
 p {
+  margin: 30px 70px;
   font-family: 'Montserrat', sans-serif;
   text-align: left;
+  font-size: 1rem;
+}
+
+.Content {
+  min-height: 100vh; 
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px; 
+  /* height: 50em;
+  width:50em; */
+}
+
+.Form-box {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  margin: 10rem 10rem;
+  text-align: center;
+}
+
+.button {
+  border-radius: 12px;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2em solid #555555;
+}
+
+.button:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.footer {
+  position: absolute;
+  bottom: 5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-p {
+  text-align: center;
+  margin: 20px 70px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+
+a:link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  text-align: center;
 }

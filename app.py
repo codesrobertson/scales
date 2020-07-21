@@ -31,8 +31,10 @@ def process():
 
 @app.route("/weigh", methods=["POST"])
 def submission():
-  weigh.Weigh().return_analysis(request.form.get('url'))
-  return render_template("weigh.html")
+  analysis = weigh.Weigh().return_analysis(request.form.get('url'))
+
+  return render_template("weigh.html", **analysis)
+  
 
 if __name__ == "__main__":
   app.run(debug=True)
