@@ -1,1 +1,2 @@
-    self.assertNotEqual(True, weigh.Weigh().get_url(url='https://www.npr.org/sections/live-updates-protests-for-racial-justice/2020/07/08/889215893/transcripts-of-police-body-cams-show-floyd-pleaded-20-times-that-he-couldnt-brea'))
+    # if title_score == {}
+    #   return "none"

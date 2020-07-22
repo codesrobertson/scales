@@ -9,29 +9,103 @@ class Weigh:
   def get_url(self, url):
     return url
 
-  #START OF FAKEBOX METHODS
-  #method to make a post request to FakeBox and return its result
-  def make_request(self, url):
+  def get_article_title(self, url):
+    dirty_text = requests.get(url).text
+    soup = bs(dirty_text, 'html.parser')
 
-    url = 'https://www.npr.org/sections/live-updates-protests-for-racial-justice/2020/07/08/889215893/transcripts-of-police-body-cams-show-floyd-pleaded-20-times-that-he-couldnt-brea'
+    title = soup.find('h1')
 
-    headers = {'Content-Type': "application/x-www-form-urlencoded; charset = utf-8",
-              'Accept': "application/x-www-form-urlencoded; charset = utf-8"}
+    return title.text
 
-    #Make dictionary to store request
-    data = {}
-    data['url'] = "url"
-    data['title'] = "title"
-    data['content'] = "content"
-    data['domain'] = "domain"
+  def get_article_contents(self, url):
+    dirty_text = requests.get(url).text
+    soup = bs(dirty_text, 'html.parser')
 
+    text = soup.find_all('p')
+    cleaned_text = []
+    for p in text:
+      cleaned_text.append(p.text)
+    return "".join(cleaned_text)
+
+  def get_request_body(self, url):
+    return {
+      "url": url,
+      "title": self.get_article_title(url),
+      "contents: ": self.get_article_contents(url)
+    }
+
+  def make_request(self, data):
     #Use requests library to return request
-    r = requests.post('http://a8db28a19f13.ngrok.io/fakebox/check', json = data)
+    r = requests.post('http://a8db28a19f13.ngrok.io/fakebox/check', json=data)
 
     if r.status_code != 200:
       print("Sorry, that link didn't work. Please ensure that the whole link was copied into the form box.")
+      return {}
 
-    return r
+    return json.loads(r.text)
+
+  #Method to return title score
+  def get_title_score(self, json_dictionary):
+    if "title" not in json_dictionary or "score" not in json_dictionary['title']:
+      return 0
+
+    title_score = json_dictionary['title']['score']
+
+    return title_score
+
+  def get_title_decision(self, json_dictionary):
+    if "title" not in json_dictionary or "decision" not in json_dictionary['title']:
+      return "none"
+
+    title_decision = json_dictionary['title']['decision']
+
+    return title_decision
+
+  # Method to return content score
+  def get_content_score(self, json_dictionary):
+    if "content" not in json_dictionary or "score" not in json_dictionary['content']:
+      return 0
+
+    content_score = json_dictionary['content']['score']
+
+    return content_score
+
+  def get_content_decision(self, json_dictionary):
+    if "content" not in json_dictionary or "decision" not in json_dictionary['content']:
+      return "none"
+      
+    content_decision = json_dictionary['content']['decision']
+
+    return content_decision
+
+  def get_domain_category(self, json_dictionary):
+    domain_category = json_dictionary['domain']['category']
+
+    return domain_category
+
+  def return_analysis(self, url):
+    data = self.get_request_body(url)
+
+    response = self.make_request(data)
+
+    title_score = self.get_title_score(response)
+    title_decision = self.get_title_decision(response)
+    content_score = self.get_content_score(response)
+    content_decision = self.get_content_decision(response)
+    domain_category = self.get_domain_category(response)
+
+    analysis = {
+      "title_score": title_score,
+      "title_decision": title_decision,
+      "content_score": content_score,
+      "content_decision": content_decision,
+      "domain_category": domain_category,
+      "overall_polarity": self.analyze_overall_polarity(url),
+      "overall_subjectivity": self.analyze_overall_subjectivity(url),
+      "average_bias": self.average_bias(url)
+    }
+
+    return analysis
 
   #Method to return request success
   def get_request_status(self, url):
@@ -46,81 +120,16 @@ class Weigh:
 
     return status
 
-  #Method to return title score
-  def get_title_score(self, url):
-    data = {}
-    data['title'] = "title"
-
-    r = requests.post('http://a8db28a19f13.ngrok.io/fakebox/check', json=data)
-
-    json_dictionary = json.loads(r.text)
-
-    title_score = json_dictionary['title']['score']
-
-    return title_score
-
-  def get_title_decision(self, url):
-    data = {}
-    data['title'] = "title"
-
-    r = requests.post('http://a8db28a19f13.ngrok.io/fakebox/check', json = data)
-
-    json_dictionary = json.loads(r.text)
-
-    title_decision = json_dictionary['title']['decision']
-
-    return title_decision
-
-  # Method to return content score
-  def get_content_score(self, url):
-    data = {}
-    data['content'] = "content"
-
-    r = requests.post('http://a8db28a19f13.ngrok.io/fakebox/check', json=data)
-
-    json_dictionary = json.loads(r.text)
-
-    content_score = json_dictionary['content']['score']
-
-    return content_score
-
-  def get_content_decision(self, url):
-    data = {}
-    data['content'] = "content"
-
-    r = requests.post('http://a8db28a19f13.ngrok.io/fakebox/check', json=data)
-
-    json_dictionary = json.loads(r.text)
-    print(json_dictionary)
-
-    content_decision = json_dictionary['content']['decision']
-
-    return content_decision
-
-  #END OF FAKEBOX METHODS
-  #START OF BS4/TEXTBLOB METHODS
-
-  # Method to extract whole text from url submission and scrape with bs4
-  def analyze_whole_text(self, url):
-    dirty_text = requests.get(url).text
-    soup = bs(dirty_text, 'html.parser')
-
-    text = soup.find_all('p')
-    cleaned_text = []
-    for p in text:
-      cleaned_text.append(p.text)
-    return "".join(cleaned_text)
-
   # Method to apply TextBlob to extracted whole text
   def analyze_overall_polarity(self, url):
-    pre_polarity = self.analyze_whole_text(url)
+    pre_polarity = self.get_article_contents(url)
 
     post_polarity = TextBlob(pre_polarity).sentiment.polarity
 
     return post_polarity
 
   def analyze_overall_subjectivity(self, url):
-    pre_subjectivity = self.analyze_whole_text(url)
+    pre_subjectivity = self.get_article_contents(url)
 
     post_subjectivity = TextBlob(pre_subjectivity).sentiment.subjectivity
 
@@ -137,24 +146,12 @@ class Weigh:
     fakebox_score = self.get_content_score(url)
     textblob_score = self.analyze_overall_subjectivity(url)
 
+    fakebox_score = int(fakebox_score)
+    textblob_score = int(textblob_score)
+
     final_score = (fakebox_score + textblob_score)/2
 
     return final_score
-
-  def return_analysis(self, url):
-    analysis = {}
-
-    analysis['status'] = self.get_request_status(url)
-    analysis['title_score'] = self.get_title_score(url)
-    analysis['title_decision'] = self.get_title_decision(url)
-    analysis['content_score'] = self.get_content_score(url)
-    analysis['content_decision'] = self.get_content_decision(url)
-    analysis['overall_polarity'] = self.analyze_overall_polarity(url)
-    analysis['overall_subjectivity'] = self.analyze_overall_subjectivity(url)
-    analysis['average_bias'] = self.average_bias(url)
-
-    print(analysis)
-    return analysis 
 
 
 Weigh().return_analysis('https://www.cnn.com/2020/07/21/politics/mitch-mcconnell-direct-payments-gop-plan/index.html')
