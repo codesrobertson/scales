@@ -53,7 +53,7 @@ class Weigh:
 
   def get_title_decision(self, json_dictionary):
     if "title" not in json_dictionary or "decision" not in json_dictionary['title']:
-      return "none"
+      return "unavailable"
 
     title_decision = json_dictionary['title']['decision']
 
@@ -69,7 +69,7 @@ class Weigh:
 
   def get_content_decision(self, json_dictionary):
     if "content" not in json_dictionary or "decision" not in json_dictionary['content']:
-      return "none"
+      return "unavailable"
       
     content_decision = json_dictionary['content']['decision']
 

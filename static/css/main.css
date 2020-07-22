@@ -135,3 +135,8 @@ a:link {
   text-align: center;
   margin-top: 5rem;
 }
+
+/* Low-highlight style inspiration: https://thirtyeightvisuals.com/blog/low-highlight-heading-links-squarespace */
+.Result-highlight {
+  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #f2d305 10%);
+}
