@@ -5,7 +5,6 @@ from textblob import TextBlob
 
 class Weigh:
 
-  #method to get the url entered in the html form 
   def get_url(self, url):
     return url
 
@@ -35,7 +34,6 @@ class Weigh:
     }
 
   def make_request(self, data):
-    #Use requests library to return request
     r = requests.post('http://a8db28a19f13.ngrok.io/fakebox/check', json=data)
 
     if r.status_code != 200:
@@ -44,7 +42,7 @@ class Weigh:
 
     return json.loads(r.text)
 
-  #Method to return title score
+
   def get_title_score(self, json_dictionary):
     if "title" not in json_dictionary or "score" not in json_dictionary['title']:
       return 0
@@ -61,7 +59,6 @@ class Weigh:
 
     return title_decision
 
-  # Method to return content score
   def get_content_score(self, json_dictionary):
     if "content" not in json_dictionary or "score" not in json_dictionary['content']:
       return 0
@@ -107,7 +104,6 @@ class Weigh:
 
     return analysis
 
-  #Method to return request success
   def get_request_status(self, url):
     data = {}
     data['success'] = "success"
@@ -120,7 +116,7 @@ class Weigh:
 
     return status
 
-  # Method to apply TextBlob to extracted whole text
+
   def analyze_overall_polarity(self, url):
     pre_polarity = self.get_article_contents(url)
 
@@ -135,13 +131,6 @@ class Weigh:
 
     return post_subjectivity
 
-  #Method to apply polarity analysis on a sentence-by-sentence level
-
-  #Method to apply subjectivity analysis on a sentence by sentence level
-
-  #START OF COMBO METHODS
-
-  # Method to return percentage from FB and TB
   def average_bias(self, url):
     fakebox_score = self.get_content_score(url)
     textblob_score = self.analyze_overall_subjectivity(url)
