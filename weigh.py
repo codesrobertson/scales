@@ -64,7 +64,7 @@ class Weigh:
       return 0
 
     content_score = json_dictionary['content']['score']
-
+  
     return content_score
 
   def get_content_decision(self, json_dictionary):
@@ -135,12 +135,9 @@ class Weigh:
     fakebox_score = self.get_content_score(url)
     textblob_score = self.analyze_overall_subjectivity(url)
 
-    fakebox_score = int(fakebox_score)
-    textblob_score = int(textblob_score)
-
     final_score = (fakebox_score + textblob_score)/2
-
+    
     return final_score
 
 
-Weigh().return_analysis('https://www.cnn.com/2020/07/21/politics/mitch-mcconnell-direct-payments-gop-plan/index.html')
+Weigh().average_bias('https://www.cnn.com/2020/07/21/politics/mitch-mcconnell-direct-payments-gop-plan/index.html')
