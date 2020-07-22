@@ -92,7 +92,7 @@ input {
 
 .button {
   background-color: white; 
-  border: 1px solid #black;
+  border: 1px solid black;
   border-radius: 4px;
   color: black;
   padding: 4px 4px;
@@ -103,6 +103,8 @@ input {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
 }
 
 .button:hover {

@@ -91,6 +91,7 @@ class Weigh:
     r = requests.post('http://a8db28a19f13.ngrok.io/fakebox/check', json=data)
 
     json_dictionary = json.loads(r.text)
+    print(json_dictionary)
 
     content_decision = json_dictionary['content']['decision']
 
@@ -156,4 +157,4 @@ class Weigh:
     return analysis 
 
 
-Weigh().return_analysis('https://www.npr.org/sections/live-updates-protests-for-racial-justice/2020/07/08/889215893/transcripts-of-police-body-cams-show-floyd-pleaded-20-times-that-he-couldnt-brea')
+Weigh().return_analysis('https://www.cnn.com/2020/07/21/politics/mitch-mcconnell-direct-payments-gop-plan/index.html')
