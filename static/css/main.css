@@ -172,3 +172,19 @@ a:link {
   background: linear-gradient(180deg,rgba(255,255,255,0) 40%, #7ec6f2 0%);
   font-size: 1.563rem;
 }
+
+.Highlit-box {
+  height: auto;
+  background: red;
+  padding-top: 2rem;
+  padding-bottom: 8rem;
+  padding-right: 5rem;
+  padding-left: 5rem;
+}
+
+.Highlit-text {
+  margin: 30px 190px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+  font-size: 1rem;
+}
