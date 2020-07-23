@@ -4,16 +4,16 @@
 
 <div class="Site-title">Scales</div>
 
-<h2>How Does It Work?</h2>
+<h2>How It Works</h2>
 
-<h3>Is this a news article?</h3>
+<h3><span class="Category-highlight">Is this a news article?</span> </h3>
 <p>Before we can ask if our news is biased, first we need to find out if it's news to begin with. When you enter a url into Scales, that url activates a trained machine learning model called Fakebox, made by Veritone. Fakebox analyzes the title, content, and url of the headline you submit. The first check Scales performs shows which of the following categories Fakebox thinks your article falls under: unsure, bias, clickbait, conspiracy, credible, fake, hate, junksci, parody, political, rumor, satire, state, trusted, unknown, or unreliable.</p>
 
-<h4>What is Clickbait?</h4>
+<h5>What is Clickbait?</h5>
 <p>Merriam Webster defines clickbait as "something (such as a headline) designed to make readers want to click on a hyperlink especially when the link leads to
 content of dubious value or interest."</p>
 
-<h3>How much of the article is Bias?</h3>
+<h3><span class="Category-highlight">How much of the article is Bias?</span> </h3>
 <p>The second check that Scales runs uses Natural Language Processing and Semantic Analysis to determine how much of the article you submitted is objective news and how much is subjective opinion. Scales uses two means of checking for bias: The first is a tool called TextBlob (fed information through Beautiful Soup 4's web scraper). The second, is the aforementioned Fakebox, which has its own semantic analysis feature and scoring. Did I need two tools? No, but it never hurts to have a second opinion, right?</p>
 
 {% endblock %}
