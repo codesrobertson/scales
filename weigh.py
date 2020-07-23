@@ -140,4 +140,24 @@ class Weigh:
     return final_score
 
 
+  #Method to get sentences from blob
+  #Feature not implementable as planned  before Capstone deadline due to unpredictability of HTML tags used by unknown sites that could be entered into Scales. 
+
+  def get_sentence_dictionary(self, url):
+    article = TextBlob(self.get_article_contents(url))
+
+    blobfather = []
+
+    for sentence in article.sentences:
+      blobs = {}
+      blobfather.append(blobs)
+      blobs['content'] = str(sentence)
+      blobs['score'] = sentence.sentiment.subjectivity
+    print(self.get_article_contents(url))
+    print(blobfather)
+    return blobfather
+
+
 Weigh().average_bias('https://www.cnn.com/2020/07/21/politics/mitch-mcconnell-direct-payments-gop-plan/index.html')
+
+Weigh().get_sentence_dictionary('https://www.cnn.com/2020/07/21/politics/mitch-mcconnell-direct-payments-gop-plan/index.html')
